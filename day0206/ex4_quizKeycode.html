@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #myimg{
+        position: absolute;
+    }
+</style>
+<script>
+    var myimg;
+    var xpos = 500;
+    var ypos = 300;
+
+    window.onload=function(){
+        myimg = document.getElementById("myimg");
+        myimg.style.top = ypos + "px";
+        myimg.style.left = xpos + "px";
+
+        window.onkeydown=function(e){
+        console.log(e.keyCode);
+           switch(e.keyCode)
+           {
+                case 38:
+                    ypos-=10;
+                    myimg.style.top=ypos+"px";
+                    break;
+                case 40:
+                    ypos += 10;
+                    myimg.style.top=ypos+"px";
+                    break;
+                case 37:
+                    xpos-=10;
+                    myimg.style.left=xpos+"px";
+                    break;
+                case 39:
+                    xpos-=10;   
+                    myimg.style.left=xpos+"px";
+                    break;
+                case 13:
+                    xpos=500;
+                    ypos=300;
+                    myimg.style.top=ypos+"px";
+                    myimg.style.left=xpos+"px";
+                    break;
+           }
+        }
+    }
+</script>
+<body>
+    <!--초기값 xpos=500 ypos=300의 위치에 처음이미지 나오도록 한후 방향키 누를때마다 10씩이덩
+    엔터누르면 다시 처음위치로 이동-->
+    <img src="../만화이미지/01.png" id="myimg">
+</body>
+</html>

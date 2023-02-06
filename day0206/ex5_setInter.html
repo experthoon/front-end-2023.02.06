@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #photo{
+            width: 400px;
+            height: 480px;
+            border: 10px groove gray;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var p = document.getElementById("photo");
+            var m = document.querySelector(".msg");
+
+            var sarr=["재미있는 자바스크립트!","오늘은 봄날씨!!","내일은 즐거운 대면수업"];
+            var carr=["red","cyan","gray","blue","orange","yellow","tomato"];
+            //이미지변경
+            document.getElementById("btnRandom").onclick=function(){
+                inter = setInterval(function(){
+                    //1~20사이의 난수 발생
+                    var num = parseInt(Math.random()*20)+1;
+                    //이미지 변경
+                    p.setAttribute("src","../연예인사진/" + num + ".jpg");
+                },500);
+
+                //0.1초마다 글자나오게하기
+                arrInter = setInterval(function(){
+                    var sidx = parseInt(Math.random()*3); // 0~2사이 랜덤값
+                    var cidx = parseInt(Math.random()*7); //0~6사이 랜덤값
+
+                    m.style.color = carr[cidx];
+                    m.innerHTML = sarr[sidx];
+                },100);
+
+            }
+            //정지
+            document.getElementById("btnStop").onclick=function(){
+                clearInterval(inter);
+
+                clearInterval(arrInter);
+            }
+        }
+    </script>
+</head>
+<body>
+    <img src="../연예인사진/10.jpg" id="photo"><br>
+    <div class="msg">111</div>
+    <button type="button" id="btnRandom">랜덤이미지</button>
+    <button type="button" id="btnStop">이미지변경</button>
+</body>
+</html>

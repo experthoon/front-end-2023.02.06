@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myimg{
+            position: absolute;
+        }
+        #btnStart{
+            margin-left: 400px;
+            position: relative;
+            width: 150px;
+            font-size: 20pt;
+            top: 200px;
+        }
+        #btnStop{
+            position: relative;
+            margin-left: 10px;
+            width: 150px;
+            font-size: 20pt;
+            top: 200px;
+        }
+    </style>
+    <script>
+        var myimg;
+        var xpos=0;
+        var ms=100;
+        var inter;
+
+        window.onload=function(){
+            myimg = document.getElementById("myimg");
+
+            //go
+            document.getElementById("btnStart").onclick=function(){
+                inter = setInterval(function(){
+                    myimg.style.left=xpos + "px";
+                    xpos +=10;
+                },ms);
+            }
+            //stop
+            document.getElementById("btnStop").onclick=function(){
+                clearInterval(inter);
+            }
+            //키보드 아스키코드값 확인
+            window.onkeyup=function(e){
+
+                console.log(e.keyCode);
+            }
+        }
+    </script>
+</head>
+<body>
+    <img src="../만화이미지/15.png" id="myimg">
+    <br><br>
+    <button type="button" id="btnStart">go go</button>
+    <button type="button" id="btnStop">stop</button>
+</body>
+</html>
